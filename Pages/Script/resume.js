@@ -618,3 +618,55 @@ function esc(s) {
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
 }
+
+/* --- CUSTOM GLOBAL MODAL ALERT --- */
+window.showLumiAlert = function(message) {
+    const existing = document.getElementById('lumi-custom-modal');
+    if (existing) existing.remove();
+
+    const modal = document.createElement('div');
+    modal.id = 'lumi-custom-modal';
+    Object.assign(modal.style, {
+        position: 'fixed', top: '0', left: '0', width: '100vw', height: '100vh',
+        backgroundColor: 'rgba(0,0,0,0.6)', display: 'flex', justifyContent: 'center', alignItems: 'center',
+        zIndex: '9999', backdropFilter: 'blur(4px)', opacity: '0', transition: 'opacity 0.2s ease'
+    });
+
+    const box = document.createElement('div');
+    Object.assign(box.style, {
+        background: 'var(--bg-card, #1E1E2E)', color: 'var(--text-color, #FFF)', padding: '24px',
+        borderRadius: '16px', maxWidth: '400px', width: '90%', boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+        border: '1px solid var(--border-color, #333)', textAlign: 'center',
+        transform: 'translateY(20px)', transition: 'transform 0.2s ease'
+    });
+
+    const text = document.createElement('p');
+    text.textContent = message;
+    text.style.margin = '0 0 20px 0'; text.style.fontSize = '1.1rem'; text.style.lineHeight = '1.5';
+
+    const btn = document.createElement('button');
+    btn.textContent = 'Got it';
+    Object.assign(btn.style, {
+        background: 'var(--primary-color, #6366F1)', color: '#FFF', border: 'none', padding: '10px 24px',
+        borderRadius: '8px', cursor: 'pointer', fontSize: '1rem', fontWeight: 'bold', transition: 'background 0.2s ease'
+    });
+
+    btn.onmouseover = () => btn.style.filter = 'brightness(1.2)';
+    btn.onmouseout = () => btn.style.filter = 'none';
+
+    btn.onclick = () => {
+        modal.style.opacity = '0';
+        box.style.transform = 'translateY(20px)';
+        setTimeout(() => modal.remove(), 200);
+    };
+
+    box.appendChild(text);
+    box.appendChild(btn);
+    modal.appendChild(box);
+    document.body.appendChild(modal);
+
+    requestAnimationFrame(() => {
+        modal.style.opacity = '1';
+        box.style.transform = 'translateY(0)';
+    });
+};
