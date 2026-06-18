@@ -883,3 +883,15 @@ body {
     50% { opacity: 1.0; }
     100% { opacity: 0.98; }
 }
+
+/* --- MOBILE RESPONSIVENESS --- */
+.burger-menu { display: none; background: none; border: none; color: var(--text-color); cursor: pointer; padding: 5px; z-index: 1001; }
+@media (max-width: 768px) {
+    .burger-menu { display: block; }
+    .navbar { padding: 10px 5%; flex-wrap: wrap; }
+    .nav-links { display: none; flex-direction: column; width: 100%; background: var(--bg-card); position: absolute; top: 60px; left: 0; padding: 20px; border-bottom: 1px solid var(--border-color); box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 1000; gap: 15px; }
+    .nav-links.active { display: flex; }
+    .container { padding: 20px 10px; }
+    .avatar-grid { grid-template-columns: 1fr; }
+    .tools-grid { grid-template-columns: 1fr 1fr; }
+}

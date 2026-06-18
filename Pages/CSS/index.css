@@ -1107,3 +1107,11 @@ textarea {
     box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
     transform: translateY(-1px);
 }
+
+/* --- MOBILE RESPONSIVENESS (NAVBAR) --- */
+.burger-menu { display: none; background: none; border: none; color: var(--text-color); cursor: pointer; padding: 5px; z-index: 1001; margin-left: auto; }
+@media (max-width: 768px) {
+    .burger-menu { display: block; }
+    .topbar .nav-links { display: none; flex-direction: column; width: 100%; background: var(--bg); position: absolute; top: 60px; left: 0; padding: 20px; border-bottom: 1px solid var(--border-color); box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 1000; gap: 15px; }
+    .topbar .nav-links.active { display: flex; }
+}
