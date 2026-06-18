@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/Pages/Screenshot_14-5-2026_141146_www.design.com-removebg-preview.png" type="image/x-icon">
+    <title>Lumi Avatar — Premium AI Portrait Creator</title>
+    <link rel="stylesheet" href="./Pages/CSS/avatar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Premium Glowing Background Orbs -->
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="logo">
+            <div class="logo-mark">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+            </div>
+            <span class="logo-text">Lumi <span class="accent-text">Image Forge</span></span>
+        </div>
+        <div class="nav-links">
+            <a href="./index.html" class="nav-link">Lumi Chat</a>
+            <a href="./resume.html" class="nav-link">Resume Scorer</a>
+            <a href="./analytics.html" class="nav-link">AI Analytics</a>
+            <a href="./avatar.html" class="nav-link active">AI Image Forge</a>
+            <a href="./games.html" class="nav-link">AI Games</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="hero-title">Forge Your Digital <span class="gradient-text">Art Masterpiece</span></h1>
+            <p class="hero-sub">Type a simple description of what you want to see. Google Gemini will automatically expand it into high-impact prompt directions, and our AI synthesizer will generate a stunning, cinematic high-resolution picture in seconds.</p>
+        </section>
+
+        <!-- Main Workspace -->
+        <div class="avatar-grid">
+            
+            <!-- Left Panel: Configurator -->
+            <div class="glass-card config-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                
+                <!-- 1. Character Prompt Input -->
+                <div class="form-group" style="flex-grow: 1;">
+                    <h3 class="section-title"><span>01</span> Describe Your Vision</h3>
+                    <div class="label-header">
+                        <span class="form-label">Core Subject Description</span>
+                        <span style="font-size:11px; color:var(--text-muted);">E.g. "a futuristic city floating in the sky with waterfalls", "a majestic neon tiger"</span>
+                    </div>
+                    <textarea class="prompt-textarea" id="basicDescription" style="height: 180px;" placeholder="Type what you want to see... E.g. 'a cozy cabin in the woods surrounded by glowing autumn leaves, cinematically lit' or 'a magnificent stellar nebula shaped like an eagle, cosmic stars and dust clouds'..."></textarea>
+                    
+                    <!-- Prompt AI expander action bar -->
+                    <div class="action-row" style="margin-top:15px; flex-wrap: wrap; gap: 10px;">
+                        <span style="font-size:12px; color:var(--text-secondary);">Expand prompt vocabulary to unlock hyper-detailed output.</span>
+                        <button class="btn btn-sparkle" id="enhancePromptBtn">
+                            <svg class="sparkles-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707-.707M12 5a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"></path>
+                            </svg>
+                            Enhance with Gemini AI
+                        </button>
+                    </div>
+
+                    <!-- AI Enhanced Prompt Output (Initially Hidden) -->
+                    <div class="enhanced-box hidden" id="enhancedBox" style="margin-top: 20px;">
+                        <div class="enhanced-header">
+                            <span class="enhanced-lbl">Lumi AI Enhanced Prompt Options</span>
+                            <div class="enhanced-concept-tabs" id="conceptTabsContainer">
+                                <!-- Tabs injected dynamically -->
+                            </div>
+                        </div>
+                        <p class="enhanced-txt" id="enhancedText">Calculating visual compositions...</p>
+                    </div>
+                </div>
+
+                <!-- 2. Synthesis Action -->
+                <div class="form-group" style="margin-bottom:0; border-top:1px solid rgba(255, 255, 255, 0.05); padding-top:20px;">
+                    <div class="action-row" style="justify-content: flex-end;">
+                        <button class="btn btn-primary" id="generateAvatarBtn" style="padding:14px 35px; font-size:15px;">
+                            <span>Forge Art Masterpiece</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Panel: Hologram Portal Frame -->
+            <div class="glass-card portal-card">
+                <h3 class="section-title" style="justify-content:center; border:none; padding:0; margin-bottom:20px;">Holographic Portal</h3>
+                
+                <!-- Hologram Circle Display -->
+                <div class="hologram-wrapper">
+                    <!-- Dashed orbiting rings -->
+                    <div class="hologram-ring"></div>
+                    <div class="hologram-ring-2"></div>
+                    
+                    <div class="hologram-portal" id="hologramPortal">
+                        <!-- Vertical laser scan beam -->
+                        <div class="scan-line"></div>
+                        <!-- Holographic screen active overlay -->
+                        <div class="hologram-overlay"></div>
+                        
+                        <!-- Placeholder -->
+                        <div class="hologram-placeholder" id="hologramPlaceholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                            <span style="font-size: 13px;">Image Portal Offline</span>
+                        </div>
+                        
+                        <!-- Loading spinner -->
+                        <div class="portal-spinner">
+                            <div class="spinner-icon"></div>
+                            <span class="spinner-text">Synthesizing Pixels...</span>
+                        </div>
+                        
+                        <!-- Generated Avatar Image -->
+                        <img class="avatar-img" id="avatarImg" src="" alt="Lumi AI Generated Masterpiece">
+                    </div>
+                </div>
+
+                <!-- Avatar Actions -->
+                <div class="portal-actions">
+                    <button class="btn btn-secondary disabled" id="saveGalleryBtn" disabled>Save to Vault</button>
+                    <button class="btn btn-primary disabled" id="downloadAvatarBtn" disabled>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Masterpiece
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Historical Creations Gallery -->
+        <section class="gallery-section">
+            <div class="glass-card gallery-card">
+                <h3 class="section-title" style="border:none; padding:0; margin-bottom:15px;">Creations Vault</h3>
+                <div class="gallery-flex" id="galleryContainer">
+                    <div class="gallery-empty">Your saved masterpieces will appear here. Try generating one!</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>Lumi Image Forge is powered by Google Gemini and Pollinations AI. Generated assets are free for personal and commercial branding.</p>
+    </footer>
+
+    <!-- Custom Script -->
+    <script src="./Pages/Script/avatar.js"></script>
+</body>
+</html>

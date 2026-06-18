@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/Pages/Screenshot_14-5-2026_141146_www.design.com-removebg-preview.png" type="image/x-icon">
+    <title>Lumi — AI Scholar</title>
+    <link rel="stylesheet" href="./Pages/CSS/games.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <!-- Premium Glowing Background Orbs -->
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Top Navigation Bar -->
+        <header class="topbar">
+            <div class="logo">
+                <div class="logo-mark">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="4" fill="currentColor" />
+                        <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </div>
+                <span class="logo-text">Lumi <span class="accent-text">AI</span></span>
+            </div>
+            <div class="nav-links" style="align-items: center;">
+                <a href="./index.html" class="nav-link">Lumi Chat</a>
+                <a href="./resume.html" class="nav-link">Resume Scorer</a>
+                <a href="./analytics.html" class="nav-link">AI Analytics</a>
+                <a href="./avatar.html" class="nav-link">AI Avatar</a>
+                <a href="./games.html" class="nav-link active">AI Games</a>
+                <div class="user-chip" id="soundToggleBtn" title="Toggle Sound SFX" style="cursor: pointer;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="soundIcon">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    </svg>
+                </div>
+            </div>
+        </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            
+            <!-- Left Side: Dashboard / Active Arena -->
+            <div class="arena-section">
+                
+                <!-- Game Selection / Landing Dashboard -->
+                <div class="dashboard-panel" id="dashboardPanel">
+                    <div class="welcome-header">
+                        <span class="badge">Lumi AI Academy</span>
+                        <h1>Unleash Your Inner Scholar</h1>
+                        <p>Challenge yourself with dynamic, AI-powered interactive quizzes. Test your English grammar limits, or type in *any* concept you want to learn. Track your high scores and receive personalized AI study guides to help you improve!</p>
+                    </div>
+
+                    <div class="mode-cards">
+                        <!-- Mode 1: Grammar Gladiator -->
+                        <div class="glass-card mode-card" id="grammarModeCard">
+                            <div class="mode-icon text-indigo">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                                </svg>
+                            </div>
+                            <h3>Grammar Gladiator</h3>
+                            <p>Master English vocabulary, syntax, punctuation, tenses, and spelling. Challenges dynamically adapt to test your rules and focus.</p>
+                            
+                            <div class="mode-settings">
+                                <label for="grammarDifficulty">Select Difficulty</label>
+                                <select id="grammarDifficulty" class="select-dropdown">
+                                    <option value="Novice">Novice (Beginner)</option>
+                                    <option value="Intermediate" selected>Intermediate (Standard)</option>
+                                    <option value="Scholar">Scholar (Advanced)</option>
+                                </select>
+                            </div>
+                            
+                            <button class="primary-btn mt-auto" id="startGrammarBtn">
+                                <span>Enter Grammar Arena</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </button>
+                        </div>
+
+                        <!-- Mode 2: Custom AI Scholar -->
+                        <div class="glass-card mode-card" id="customModeCard">
+                            <div class="mode-icon text-purple">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+                                    <path d="M6 6h10M6 10h10"></path>
+                                </svg>
+                            </div>
+                            <h3>AI Custom Scholar</h3>
+                            <p>Study *any* subject in the universe. Enter a topic (e.g., Botany, Python Coding, European History), and Lumi will formulate a custom test.</p>
+                            
+                            <div class="mode-settings">
+                                <label for="customTopicInput">Enter Study Subject</label>
+                                <input type="text" id="customTopicInput" class="text-input" placeholder="e.g., Quantum Physics, Basic French, Organic Chemistry..." maxlength="60" />
+                            </div>
+                            
+                            <button class="purple-btn mt-auto" id="startCustomBtn">
+                                <span>Forge Customized Test</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Quiz Arena -->
+                <div class="glass-card arena-panel hidden" id="arenaPanel">
+                    <div class="arena-header">
+                        <button class="back-btn" id="quitArenaBtn" title="Quit Quiz">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                            <span>Quit</span>
+                        </button>
+                        <div class="arena-title-wrapper">
+                            <span class="badge" id="arenaCategoryBadge">Grammar Gladiator</span>
+                            <span class="arena-timer" id="arenaTimer">30s</span>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="progress-bar-wrapper">
+                        <div class="progress-info">
+                            <span id="questionProgressText">Question 1 of 5</span>
+                            <span id="currentAccuracyText">Score: 0/0</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" id="progressFill" style="width: 20%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Question Container -->
+                    <div class="question-container">
+                        <h2 class="question-text" id="questionText">Loading educational challenges...</h2>
+                        <div class="choices-grid" id="choicesGrid">
+                            <!-- Dynamically loaded choices -->
+                        </div>
+                    </div>
+
+                    <!-- Explanation Alert Panel -->
+                    <div class="explanation-panel hidden" id="explanationPanel">
+                        <div class="explanation-header">
+                            <div class="explanation-status-icon" id="explanationStatusIcon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </div>
+                            <h4 id="explanationStatusTitle">Correct!</h4>
+                        </div>
+                        <p class="explanation-body" id="explanationBody">Explanation loads here...</p>
+                    </div>
+
+                    <!-- Arena Footer / Navigation -->
+                    <div class="arena-footer">
+                        <div class="topic-tag">
+                            Topic: <span id="questionTopicText">Syntax</span>
+                        </div>
+                        <button class="next-btn hidden" id="nextQuestionBtn">
+                            <span>Next Question</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Final Score Report Panel -->
+                <div class="glass-card score-panel hidden" id="scorePanel">
+                    <div class="score-header">
+                        <span class="badge">Assessment Complete</span>
+                        <h1>Your Score Report</h1>
+                    </div>
+
+                    <div class="score-summary-grid">
+                        <div class="percentage-circle-wrapper">
+                            <svg viewBox="0 0 36 36" class="circular-chart">
+                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="circle" id="scoreChartCircle" stroke-dasharray="80, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <text x="18" y="20.35" class="percentage" id="scoreChartPercentageText">80%</text>
+                            </svg>
+                        </div>
+                        <div class="score-metrics">
+                            <h2 id="scoreRatingText">Good Effort!</h2>
+                            <p class="score-desc" id="scoreRatingDescText">You got 4 out of 5 questions correct. Review your details below to lock in the concepts!</p>
+                            <div class="stat-boxes">
+                                <div class="stat-box">
+                                    <span class="stat-label">Correct</span>
+                                    <span class="stat-value text-green" id="scoreCorrectValue">4</span>
+                                </div>
+                                <div class="stat-box">
+                                    <span class="stat-label">Incorrect</span>
+                                    <span class="stat-value text-red" id="scoreIncorrectValue">1</span>
+                                </div>
+                                <div class="stat-box">
+                                    <span class="stat-label">Time Spent</span>
+                                    <span class="stat-value" id="scoreTimeValue">45s</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Play Review & Mistakes List -->
+                    <div class="mistake-review-section">
+                        <h3>Mistake Analysis</h3>
+                        <div class="mistake-list" id="mistakeListContainer">
+                            <!-- Mistake items loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Improvement Buttons -->
+                    <div class="score-actions">
+                        <button class="secondary-btn" id="scoreCloseBtn">Return to Academy</button>
+                        <button class="primary-btn" id="generateStudyGuideBtn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                            <span>Generate AI Study Guide</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Custom Study Guide Viewer Panel -->
+                <div class="glass-card guide-panel hidden" id="guidePanel">
+                    <div class="guide-header">
+                        <div class="guide-title-wrapper">
+                            <span class="badge">Lumi AI Personalized Study Guide</span>
+                            <h1 id="guideTopicTitle">Personalized Grammar Roadmap</h1>
+                        </div>
+                        <button class="back-btn" id="closeGuideBtn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                            <span>Back to Scores</span>
+                        </button>
+                    </div>
+
+                    <div class="guide-content">
+                        <!-- AI Strategic Report Block -->
+                        <div class="guide-summary-card">
+                            <h3>Diagnostic Summary</h3>
+                            <p id="guideSummaryText">Loading strategic evaluation...</p>
+                        </div>
+
+                        <!-- Core Conceptual Strength & Weakness Lists -->
+                        <div class="grid-columns">
+                            <div class="eval-box strength-box">
+                                <h4>Demonstrated Strengths</h4>
+                                <ul id="guideStrengthsList">
+                                    <!-- Strengths loaded here -->
+                                </ul>
+                            </div>
+                            <div class="eval-box weakness-box">
+                                <h4>Areas of Growth</h4>
+                                <ul id="guideWeaknessesList">
+                                    <!-- Weaknesses loaded here -->
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Study Rules Section -->
+                        <div class="rules-section">
+                            <h3>Key Grammar Rules & Guides</h3>
+                            <div class="rules-container" id="guideRulesContainer">
+                                <!-- Rules items loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Action Recommendations Section -->
+                        <div class="recommendations-section">
+                            <h3>Action Items to Improve</h3>
+                            <ol id="guideRecommendationsList">
+                                <!-- Action items loaded here -->
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Side: Performance Center & Leaderboard -->
+            <div class="performance-section">
+                <!-- Academic Stats Widget -->
+                <div class="glass-card widget-card">
+                    <div class="widget-header">
+                        <h3>Your Progress Summary</h3>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    
+                    <div class="overall-progress-row">
+                        <div class="radial-ring-progress">
+                            <svg viewBox="0 0 36 36" class="small-circular-chart">
+                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="circle" id="globalAccuracyCircle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <text x="18" y="21.5" class="small-percentage" id="globalAccuracyText">0%</text>
+                            </svg>
+                        </div>
+                        <div class="overall-progress-meta">
+                            <h4>Overall Accuracy</h4>
+                            <p id="globalGradeText">Start playing to compute your grade!</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-rows">
+                        <div class="stat-row">
+                            <span class="label">Attempted Quizzes</span>
+                            <span class="value" id="statsTotalQuizzes">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="label">Solved Questions</span>
+                            <span class="value" id="statsTotalQuestions">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="label">Active Streak</span>
+                            <span class="value text-orange" id="statsStreak">0 🔥</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="label">Grammar Gladiator Max</span>
+                            <span class="value" id="statsGrammarMax">N/A</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Badges Widget -->
+                <div class="glass-card widget-card">
+                    <div class="widget-header">
+                        <h3>Earned Scholar Badges</h3>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <div class="badges-grid" id="badgesGrid">
+                        <!-- Badges list -->
+                        <div class="badge-item locked" id="badgeNovice" title="Score 80%+ on any quiz">
+                            <div class="badge-icon">🎓</div>
+                            <span>Novice Scholar</span>
+                        </div>
+                        <div class="badge-item locked" id="badgeStreak" title="Maintain a 3-quiz streak above 80%">
+                            <div class="badge-icon">🔥</div>
+                            <span>Active Learner</span>
+                        </div>
+                        <div class="badge-item locked" id="badgeGrammar" title="Get a perfect score (5/5) in Grammar Gladiator">
+                            <div class="badge-icon">🗡️</div>
+                            <span>Grammar Knight</span>
+                        </div>
+                        <div class="badge-item locked" id="badgePolymath" title="Solve quizzes in 3 custom AI topics">
+                            <div class="badge-icon">🔬</div>
+                            <span>AI Polymath</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Loader Overlay -->
+                <div class="loader-overlay hidden" id="arenaLoader">
+                    <div class="glass-card loader-card">
+                        <div class="spinner"></div>
+                        <h3 id="loaderTitle">Forging Dynamic AI Quiz...</h3>
+                        <p id="loaderMessage">Lumi is creating custom educational materials for you. Please stand by.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="./Pages/Script/games.js?v=2"></script>
+</body>
+
+</html>
