@@ -117,13 +117,13 @@ function handleFileSelection(file) {
     // Check file extension
     const ext = file.name.split('.').pop().toLowerCase();
     if (ext !== 'pdf' && ext !== 'txt') {
-        alert('Unsupported file type. Please upload a PDF or TXT file.');
+        showLumiAlert('Unsupported file type. Please upload a PDF or TXT file.');
         return;
     }
     
     // Check file size (5MB cap)
     if (file.size > 5 * 1024 * 1024) {
-        alert('File size exceeds the 5MB limit.');
+        showLumiAlert('File size exceeds the 5MB limit.');
         return;
     }
     
@@ -263,7 +263,7 @@ async function startAnalysis() {
     } catch (error) {
         clearInterval(interval);
         console.error("Analysis failed:", error);
-        alert("An error occurred during resume analysis: " + error.message);
+        showLumiAlert("An error occurred during resume analysis: " + error.message);
         
         // Reset status
         analysisStatus.classList.add('hidden');

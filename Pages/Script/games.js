@@ -381,7 +381,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = await res.json();
             
             if (data.error) {
-                alert(data.error);
+                showLumiAlert(data.error);
                 hideLoader();
                 return;
             }
@@ -403,7 +403,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
         } catch (e) {
             console.error("Failed to load grammar quiz:", e);
-            alert("Could not load educational material. Make sure the server backend is running properly.");
+            showLumiAlert("Could not load educational material. Make sure the server backend is running properly.");
             hideLoader();
         }
     }
@@ -412,7 +412,7 @@ document.addEventListener("DOMContentLoaded", () => {
         playSound('click');
         const topic = customTopicInput.value.trim();
         if (!topic) {
-            alert("Please enter a study subject to forge customized educational material!");
+            showLumiAlert("Please enter a study subject to forge customized educational material!");
             return;
         }
         
@@ -427,7 +427,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = await res.json();
             
             if (data.error) {
-                alert(data.error);
+                showLumiAlert(data.error);
                 hideLoader();
                 return;
             }
@@ -449,7 +449,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
         } catch (e) {
             console.error("Failed to load custom quiz:", e);
-            alert("Could not load educational material. Make sure the server backend is running properly.");
+            showLumiAlert("Could not load educational material. Make sure the server backend is running properly.");
             hideLoader();
         }
     }
@@ -727,7 +727,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = await res.json();
             
             if (data.error) {
-                alert(data.error);
+                showLumiAlert(data.error);
                 hideLoader();
                 return;
             }
@@ -780,7 +780,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
         } catch (e) {
             console.error("Failed to compile custom AI study guide roadmap:", e);
-            alert("Encountered failure talking to Lumi Tutor backend. Ensure your Flask server is up and key is set.");
+            showLumiAlert("Encountered failure talking to Lumi Tutor backend. Ensure your Flask server is up and key is set.");
             hideLoader();
         }
     }

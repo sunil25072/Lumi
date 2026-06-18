@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function enhancePromptWithAI() {
     const text = basicDescription.value.trim();
     if (!text) {
-        alert('Please enter a description of your vision first (e.g. "a futuristic tree of life at golden hour").');
+        showLumiAlert('Please enter a description of your vision first (e.g. "a futuristic tree of life at golden hour").');
         return;
     }
 
@@ -105,7 +105,7 @@ async function enhancePromptWithAI() {
 
     } catch (e) {
         console.error("Enhancement failed:", e);
-        alert("Failed to enhance prompt: " + e.message + "\nUsing direct description.");
+        showLumiAlert("Failed to enhance prompt: " + e.message + "\nUsing direct description.");
         
         enhancedBox.classList.remove('hidden');
         conceptTabsContainer.innerHTML = '<button class="concept-tab active">Direct Prompt</button>';
@@ -134,7 +134,7 @@ async function triggerImageSynthesis() {
     } else {
         const desc = basicDescription.value.trim();
         if (!desc) {
-            alert('Please enter a description or enhance it with Gemini first.');
+            showLumiAlert('Please enter a description or enhance it with Gemini first.');
             return;
         }
         promptToUse = desc;
@@ -200,7 +200,7 @@ async function triggerImageSynthesis() {
         };
         
         fallbackLoader.onerror = function() {
-            alert('Generator service is currently busy. Please try another prompt.');
+            showLumiAlert('Generator service is currently busy. Please try another prompt.');
             hologramPortal.className = 'hologram-portal';
             hologramPlaceholder.classList.remove('hidden');
             
@@ -261,7 +261,7 @@ function saveActiveToLocalGallery() {
 
     // Check if it already exists
     if (galleryAvatars.some(item => item.url === src)) {
-        alert('This masterpiece is already saved in your vault.');
+        showLumiAlert('This masterpiece is already saved in your vault.');
         return;
     }
 

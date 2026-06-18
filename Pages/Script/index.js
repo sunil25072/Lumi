@@ -195,14 +195,14 @@ async function playTts(text, btn) {
     } catch (error) {
         console.error('TTS Error:', error);
         btn.classList.remove('playing');
-        alert("Sorry, I couldn't generate audio right now. " + error.message);
+        showLumiAlert("Sorry, I couldn't generate audio right now. " + error.message);
     }
 }
 
 /* ── Voice Recording (STT) ──────────────────────────────────── */
 async function toggleMic() {
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        alert('Microphone not supported on this device.');
+        showLumiAlert('Microphone not supported on this device.');
         console.warn('getUserMedia not available');
         return;
     }
@@ -218,7 +218,7 @@ async function toggleMic() {
 async function startRecording() {
     // Verify MediaRecorder support
     if (typeof MediaRecorder === 'undefined') {
-        alert('Your browser does not support audio recording.');
+        showLumiAlert('Your browser does not support audio recording.');
         console.warn('MediaRecorder not available');
         return;
     }
@@ -243,7 +243,7 @@ async function startRecording() {
         userInput.placeholder = "Listening...";
     } catch (err) {
         console.error("Mic Error:", err);
-        alert("Could not access microphone. Please check permissions.");
+        showLumiAlert("Could not access microphone. Please check permissions.");
         console.error('Mic permission error');
     }
 }
@@ -286,7 +286,7 @@ async function sendAudioToStt(blob) {
         console.error("STT Error:", err);
         userInput.value = "";
         userInput.disabled = false;
-        alert("Transcription failed.");
+        showLumiAlert("Transcription failed.");
     }
 }
 
@@ -517,7 +517,7 @@ async function send() {
         console.error('Fetch error:', error);
         removeTyping();
         appendMsg('ai', "Connection error: " + error.message);
-        alert("Lumi is offline. Please check your terminal to ensure the backend is running.");
+        showLumiAlert("Lumi is offline. Please check your terminal to ensure the backend is running.");
     } finally {
         isTyping = false;
         syncInput();

@@ -120,13 +120,13 @@ function handleFileSelection(file) {
     
     const ext = file.name.split('.').pop().toLowerCase();
     if (ext !== 'csv' && ext !== 'xlsx' && ext !== 'xls') {
-        alert('Unsupported file type. Please upload a CSV or Excel file.');
+        showLumiAlert('Unsupported file type. Please upload a CSV or Excel file.');
         return;
     }
     
     // Check file size (15MB cap)
     if (file.size > 15 * 1024 * 1024) {
-        alert('File size exceeds the 15MB limit.');
+        showLumiAlert('File size exceeds the 15MB limit.');
         return;
     }
     
@@ -200,7 +200,7 @@ function parseCSVData(text, filename, filesize) {
         }
     } catch (error) {
         console.error("CSV Parse error:", error);
-        alert("Failed to parse CSV file: " + error.message);
+        showLumiAlert("Failed to parse CSV file: " + error.message);
         resetDropZone();
     }
 }
@@ -225,7 +225,7 @@ function parseExcelData(arrayBuffer, filename, filesize) {
         
     } catch (error) {
         console.error("Excel Parse error:", error);
-        alert("Failed to parse Excel file: " + error.message);
+        showLumiAlert("Failed to parse Excel file: " + error.message);
         resetDropZone();
     }
 }
@@ -233,7 +233,7 @@ function parseExcelData(arrayBuffer, filename, filesize) {
 // Process parsed rows, calculate descriptive metadata, and show client-side preview
 function processParsedData(rows, filename, filesize) {
     if (!rows || rows.length === 0) {
-        alert("Dataset appears to be empty.");
+        showLumiAlert("Dataset appears to be empty.");
         resetDropZone();
         return;
     }
@@ -534,7 +534,7 @@ async function startAIAnalysis() {
     } catch (error) {
         clearInterval(interval);
         console.error("AI Analysis failed:", error);
-        alert("An error occurred during AI analysis: " + error.message);
+        showLumiAlert("An error occurred during AI analysis: " + error.message);
         
         // Reset status
         analysisStatus.classList.add('hidden');
