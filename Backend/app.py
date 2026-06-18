@@ -127,8 +127,8 @@ def chat():
         error_details = traceback.format_exc()
         sys.stderr.write(f"\n!!! BACKEND ERROR !!!\n{error_details}\n")
         err_msg = str(e)
-        if "rate_limit_exceeded" in err_msg.lower():
-            err_msg = "Rate limit exceeded. Please wait a moment."
+        if "rate_limit_exceeded" in err_msg.lower() or "429" in err_msg or "quota" in err_msg.lower():
+            err_msg = "Lumi is currently thinking too fast! You've hit the Gemini Free Tier limit (5 requests per minute). Please wait about 60 seconds before sending another message."
         return jsonify({"error": err_msg, "status": "error"}), 500
 
 @app.route('/api/tts', methods=['POST'])
