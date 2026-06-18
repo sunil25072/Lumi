@@ -3,7 +3,7 @@
    Dynamic Game Arena State Machine, Local Stats tracking, Web Audio FX
    ========================================================================== */
 
-const API_BASE = (window.location.protocol === 'http:' || window.location.protocol === 'https:') ? '/api' : 'http://localhost:5500/api';
+const API_BASE = 'http://localhost:5001/api';
 
 document.addEventListener("DOMContentLoaded", () => {
     // ── WEB AUDIO SYNTHESIZER SOUND SYSTEM ──
