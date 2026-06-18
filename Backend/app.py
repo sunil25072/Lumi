@@ -58,16 +58,11 @@ def serve_pages(path):
     return send_from_directory(os.path.join(app.static_folder, 'Pages'), path)
 
 # Initialize OpenAI client with Groq API key
-groq_api_key = os.getenv("GROQ_API_KEY")
-client = openai.OpenAI(
-    api_key=groq_api_key,
-    base_url="https://api.groq.com/openai/v1"
-) if groq_api_key else None
-
 @app.route('/api/chat', methods=['POST'])
 def chat():
-    if not client:
-        return jsonify({"error": "Backend not configured with a valid Groq API key"}), 500
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        return jsonify({"error": "Backend not configured with a valid Gemini API key"}), 500
 
     try:
         data = request.get_json(silent=True) or {}
@@ -95,30 +90,31 @@ def chat():
             "Your goal is to be the best AI companion for the user."
         )
 
-        # Build messages list with history
-        messages = [{"role": "system", "content": system_instruction}]
+        import google.generativeai as genai
+        genai.configure(api_key=api_key)
+        model = genai.GenerativeModel('gemini-flash-latest', system_instruction=system_instruction)
+
+        # Build contents list for Gemini
+        contents = []
+        last_role = None
         
-        # Add history (ensure alternating roles for Groq compatibility)
-        last_role = "system"
         for h in history:
-            role = "assistant" if h["role"] == "ai" else "user"
+            role = "model" if h["role"] == "ai" else "user"
             if role != last_role:
-                messages.append({"role": role, "content": h["text"]})
+                contents.append({"role": role, "parts": [h["text"]]})
                 last_role = role
         
         # Add current message
-        messages.append({"role": "user", "content": user_message})
+        if last_role == "user":
+            # Gemini requires alternating roles; if history ended with user, append to the last message
+            contents[-1]["parts"][0] += f"\n\n{user_message}"
+        else:
+            contents.append({"role": "user", "parts": [user_message]})
 
-        # Using Llama 3.3 70B on Groq
-        response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=messages,
-            timeout=30
-        )
+        response = model.generate_content(contents)
         
-        reply_text = response.choices[0].message.content.strip()
+        reply_text = response.text.strip()
         if not reply_text:
-            # Fallback default response for empty LLM output
             reply_text = "Hello! How can I assist you today?"
         
         return jsonify({
